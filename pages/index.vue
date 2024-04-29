@@ -1,5 +1,9 @@
 <template>
     <NuxtLayout>
+        <template #firstSpace>
+            <NuxtLink class="boxRegister" to="/registration"><button>Register</button></NuxtLink>
+            <NuxtLink class="boxLogin" to="/login"><button>Log in</button></NuxtLink>
+        </template>
         <div style="padding: 1vw;">
             <NuxtImg
                 src="/New_Logo-01.jpg"

@@ -1,22 +1,11 @@
 <template>
-    <div>
-        <Curso title="Aerodinámica" teacher="Alvarado"></Curso>
-        <Curso title="Agricultura" teacher="Juanito"></Curso>
-        <Curso title="Control" teacher="Benigno"></Curso>
-        <UPopover>
-        <UButton color="white" label="Open" trailing-icon="i-heroicons-chevron-down-20-solid" />
-
-        <template #panel>
-        <div class="p-4">
-            <Placeholder class="h-20 w-48" />
-      </div>
+  <NuxtLayout>
+    <template #firstSpace>
+      <div class="tittleSecondSpace">Register new account</div>
+      <NuxtLink class="boxHome" to="/"><button>Home Page</button></NuxtLink>
     </template>
-  </UPopover>
-        
-    </div>
+    <div class="selectAccount">Select the type of account you would like to register:</div>
+    <NuxtLink class="academyAccount" to="/register_academy"><button>I would like to register as an <div style="font-weight: bold;">Academy</div></button></NuxtLink>
+    <NuxtLink class="individualAccount" to="/register_individual"><button>I would like to register as an <div style="font-weight: bold;">Individual</div></button></NuxtLink>
+  </NuxtLayout>
 </template>
-<script setup>
-    import {ref} from 'vue'
-    // api -> devuelve algo
-    const libros = ref(["aerodinamica","calculo"])
-</script>
