@@ -16,7 +16,9 @@
                 <NuxtLink to="/academy/home_academy_admin" style="text-decoration: none;">
                     <button style="color: black; background-color: white; border: 2px solid black; border-radius: 10px; padding: 5px 10px; margin-right: 10px;">Administrator</button>
                 </NuxtLink>
-                <button style="color: black; background-color: white; border: 2px solid black; border-radius: 10px; padding: 5px 10px;">Instructor</button>
+                <NuxtLink to="/academy/home_academy_instructor" style="text-decoration: none;">
+                    <button style="color: black; background-color: white; border: 2px solid black; border-radius: 10px; padding: 5px 10px;">Instructor</button>
+                </NuxtLink>
             </div>
             <NuxtImg
                 src="/New_Logo-01.jpg"
