@@ -69,7 +69,7 @@ console.log(options["Free Flight"][1]);
     v-if="selected == 1"
     class="bg-[#2D4C9A] relative w-[400px] h-screen p-5 flex flex-col text-2xl text-[#f5f5f5] items-center"
   >
-    <div class="mt-[265px] flex gap-6 flex-col items-center">
+    <div class="mt-[265px] flex gap-6 flex-col items-center h-screen">
       <p
         class="hover:bg-gray-500"
         v-for="option in options[category][selected]"
@@ -77,7 +77,7 @@ console.log(options["Free Flight"][1]);
         {{ option }}
       </p>
       <p
-        class="relative top-[500px] cursor-pointer hover:bg-gray-500"
+        class="fixed bottom-4 cursor-pointer hover:bg-gray-500"
         @click="setSelected(0)"
       >
         Back
