@@ -2,6 +2,6 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', '@nuxt/image',],
-
-})
+  modules: ["@nuxt/ui", "@nuxt/image"],
+  ssr: false,
+});
