@@ -11,10 +11,16 @@
 
 </template>
 
-<script>
-import '~/assets/css/style.css'
-</script>
+<style scoped>
+    .firstSpace {
+        box-sizing: content-box;
+        height: 20vh;
+        background-color: #2D4C9A;
 
-<style>
-@import url("~/assets/css/style.css");
+    }
+    .principalSpace {
+        box-sizing: content-box;
+        height: 80vh;
+        background-color: white;
+    }
 </style>

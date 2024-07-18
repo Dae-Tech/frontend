@@ -1,7 +1,7 @@
 <template>
     <NuxtLayout>
         <template #firstSpace>
-            <h1 class="tittleSecondSpace">You're not subscribed yet</h1>
+            <h1 class="tittleFirstSpace">You're not subscribed yet</h1>
             <NuxtLink class="boxHome" to="/"><button>Home Page</button></NuxtLink>
         </template>
         <div class="planText">Select the subscription plan that best suits you!</div>
@@ -17,13 +17,45 @@
 </template>
 
 <style scoped>
-    .tittleSecondSpace {
-    padding: 0px;
-    margin: 5vh 13px 10px 13px;
-    box-sizing: border-box;
-    font-size: 5.5vh;
-    width: 75vw;
-    float: left;
-    text-align: center;
+    .boxHome {
+        padding: 5px;
+        margin: 5vh 13px 10px 13px;
+        border: 4px solid white;
+        background-color: #2D4C9A;
+        width: 20vw;
+        float: right;
+        font-size: 25px;
+        text-align: center;
+        border-radius: 1vh;
+        text-decoration: none;
+    }
+    .tittleFirstSpace {
+        padding: 0px;
+        margin: 5vh 13px 10px 13px;
+        box-sizing: border-box;
+        font-size: 5.5vh;
+        width: 75vw;
+        float: left;
+        text-align: center;
+    }
+    .planText {
+        padding: 4vh 0vw 2vh 0vw;
+        font-size: 1.5vw;
+        width: 100%;
+        text-align: center;
+    }
+    .groupPlan{
+        width: 100%;
+        padding: 3vh;
+    }
+    .paymentBox {
+        background-color: #4BA9C7;
+        border: 1px solid black;
+        float: right;
+        padding: 10px;
+        margin: 10vh 4vw 10px 10vw;
+        width: 20vw;
+        border-radius: 2vh;
+        font-size: 20px;
     }
 </style>
