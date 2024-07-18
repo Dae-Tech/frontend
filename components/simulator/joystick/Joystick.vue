@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import { computed } from "vue";
 const throttle = ref(0);
 const roll = ref(0);
 const pitch = ref(0);
 const yaw = ref(0);
+
+const getFirstAxis = computed(() => {
+  const base = 123;
+  return "top-[" + (base + throttle.value * 10).toString() + "px]";
+});
 
 interface ControlsInput {
   roll: number;
@@ -34,27 +40,61 @@ map.set("ArrowLeft", "i-heroicons-arrow-small-left");
 map.set("8", "i-heroicons-arrow-up");
 map.set("2", "i-heroicons-arrow-down");
 
+function validCommand(
+  currentValue: number,
+  step: number,
+  limit: number,
+  operator: string
+): boolean {
+  if (operator == "<=") {
+    return currentValue + step <= limit;
+  }
+  if (operator == ">=") {
+    return currentValue + step >= limit;
+  }
+  if (operator == ">") {
+    return currentValue + step > limit;
+  }
+  if (operator == "<") {
+    return currentValue + step < limit;
+  } else {
+    return false;
+  }
+}
+
 const keyPressed = ref("");
 
 window.addEventListener("keydown", (e) => {
   keyPressed.value = e.key;
   if (e.key == "ArrowUp") {
-    throttle.value += 0.1;
+    if (validCommand(throttle.value, 0.1, 1, "<=")) {
+      throttle.value += 0.1;
+    }
   }
   if (e.key == "ArrowDown") {
-    throttle.value -= 0.1;
+    if (validCommand(throttle.value, -0.1, 0, ">")) {
+      throttle.value -= 0.1;
+    }
   }
   if (e.key == "ArrowRight") {
-    roll.value += 0.1;
+    if (validCommand(roll.value, 0.1, 1, "<=")) {
+      roll.value += 0.1;
+    }
   }
   if (e.key == "ArrowLeft") {
-    roll.value -= 0.1;
+    if (validCommand(roll.value, -0.1, -1, ">=")) {
+      roll.value -= 0.1;
+    }
   }
   if (e.key == "8") {
-    pitch.value += 0.1;
+    if (validCommand(pitch.value, 0.1, 1, "<=")) {
+      pitch.value += 0.1;
+    }
   }
   if (e.key == "2") {
-    pitch.value -= 0.1;
+    if (validCommand(pitch.value, -0.1, -1, ">=")) {
+      pitch.value -= 0.1;
+    }
   }
 });
 </script>
@@ -99,6 +139,19 @@ window.addEventListener("keydown", (e) => {
       </div>
       <p class="text-black">Roll: {{ roll.toFixed(3) }}</p>
       <p class="text-black">Pitch: {{ pitch.toFixed(3) }}</p>
+    </div>
+    <div
+      class="w-[300px] h-[300px] bg-center bg-no-repeat bg-contain"
+      :class="['bg-[url(/joystick.png)]']"
+    >
+      <div
+        :style="{ top: `${125 - throttle * 10}px` }"
+        class="w-[50px] h-[50px] bg-blue-500 rounded-full relative left-[78px]"
+      ></div>
+      <div
+        :style="{ top: `${76 - pitch * 10}px`, left: `${174 + roll * 10}px` }"
+        class="w-[50px] h-[50px] bg-red-500 rounded-full relative"
+      ></div>
     </div>
   </div>
 </template>
