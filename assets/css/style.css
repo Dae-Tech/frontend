@@ -1,0 +1,247 @@
+body{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.firstSpace {
+  box-sizing: content-box;
+  height: 20vh;
+  background-color: #2D4C9A;
+
+}
+.principalSpace {
+  box-sizing: content-box;
+  height: 80vh;
+  background-color: white;
+}
+.boxLogin {
+  padding: 5px;
+  margin: 5vh 13px 10px 13px;
+  border: 1px solid black;
+  background-color: #4BA9C7;
+  width: 25vw;
+  float: right;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 1vh;
+  color: black;
+  text-decoration: none;
+}
+.boxRegister {
+  padding: 5px;
+  margin: 5vh 13px 10px 13px;
+  border: 1px solid black;
+  background-color: #4BA9C7;
+  width: 20vw;
+  float: right;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 1vh;
+  color: black;
+  text-decoration: none;
+}
+.boxHome {
+  padding: 5px;
+  margin: 5vh 13px 10px 13px;
+  border: 4px solid white;
+  background-color: #2D4C9A;
+  width: 20vw;
+  float: right;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 1vh;
+  text-decoration: none;
+}
+.boxAbout {
+  padding: 5px;
+  margin: 4vh 13px 4vh 13px;
+  border: 1px solid black;
+  background-color: #4BA9C7;
+  width: 20vw;
+  float: right;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 1vh;
+}
+.simName {
+  padding: 10px;
+  margin: 0vh 10px 0vh 20vw;
+  font-size: 10vh;
+  text-align: center;
+  width: 40vw;
+  color: #3A3938;
+}
+.version {
+  padding: 5px;
+  margin: 0vh 10px 4vh 20vw;
+  font-size: 3vh;
+  text-align: center;
+  width: 40vw;
+  color: #3A3938;
+}
+.tittleSecondSpace {
+  padding: 0px;
+  margin: 5vh 13px 10px 13px;
+  box-sizing: border-box;
+  font-size: 5.5vh;
+  width: 75vw;
+  float: left;
+  text-align: center;
+}
+.selectAccount{
+  padding-left: 33vw;
+  padding-right: 33vw;
+  padding-top: 4vh;
+  font-size: 35px;
+  text-align: center;
+  color: black;
+}
+.academyAccount{
+  float: left;
+  padding: 10px;
+  margin: 15vh 10px 10px 16vw;
+  box-shadow: -7px 7px 5px #3A3938;
+  width: 26vw;
+  border: 1px solid black;
+  background-color: #2D4C9A;
+  text-align: center;
+  font-size: 29px;
+  border-radius: 2vh;
+}
+.individualAccount{
+  float: right;
+  padding: 10px;
+  margin: 15vh 16vw 10px 10px;
+  box-shadow: -7px 7px 5px #3A3938;
+  width: 26vw;
+  border: 1px solid black;
+  background-color: #4BA9C7;
+  text-align: center;
+  font-size: 29px;
+  border-radius: 2vh;
+  text-decoration: none;
+}
+.individualForm {
+  padding: 2vh 3vw 2vh 3vw;
+  margin: 0vh 2vw 0vh 1vw;
+  font-size: 20px;
+  color: black;
+}
+.inputRegister {
+  width: 30vw;
+  margin-left: 5vw;
+  font-size: 2.5vh;
+  border-radius: 2vh;
+  padding-left: 0.5vw;
+  height: 5vh;
+}
+.managementPolicy {
+  font-size: 23px;
+  padding: 8vh 7vw 0vh 35vw;
+  color: black;
+}
+.registerBox {
+  background-color: #2D4C9A;
+  box-shadow: -7px 7px 5px #3A3938;
+  border: 1px solid black;
+  float: right;
+  padding: 10px;
+  margin: 2vh 4vw 10px 4vw;
+  width: 20vw;
+  border-radius: 2vh;
+  font-size: 20px;
+  text-decoration: none;
+}
+.paymentBox {
+  background-color: #4BA9C7;
+  border: 1px solid black;
+  float: right;
+  padding: 10px;
+  margin: 10vh 4vw 10px 10vw;
+  width: 20vw;
+  border-radius: 2vh;
+  font-size: 20px;
+}
+.planText {
+  padding: 4vh 0vw 2vh 0vw;
+  font-size: 1.5vw;
+  width: 100%;
+  text-align: center;
+}
+.groupPlan{
+  width: 100%;
+  padding: 3vh;
+}
+.groupPlan h3{
+  padding-bottom: 0;
+  margin: 0;
+}
+.btnPlan{
+  border: #3A3938 solid 2px;
+  background-color: #4BA9C7;
+  color: #3A3938;
+  padding: 4vh 13vw 4vh 13vw;
+  font-size: 3vh;
+  float: left;
+  border-radius: 1vh;
+  height: 30vh;
+}
+.logForm {
+  padding: 2vh 3vw 2vh 3vw;
+  margin: 0vh 2vw 0vh 2vw;
+  font-size: 3vh;
+  width: 35vw;
+  text-align: center;
+}
+.inputLog {
+  width: 30vw;
+  margin-left: 5vw;
+  font-size: 2.5vh;
+  border-radius: 2vh;
+  padding-left: 0.5vw;
+  height: 5vh;
+  background-color: white;
+}
+.Log{
+  float: right;
+  margin-top: 5vh;
+  margin-right: 3vw;
+  background-color: #2D4C9A;
+  height: 60vh;
+  border-radius: 2vh;
+}
+.Log .boxLogin{
+  float: none;
+  margin: 20vh 4.5vw 2vh 4.5vw;
+  padding: 0vh 2vw 0vh 2vw;
+  width: 30vw;
+  height: 7vh;
+}
+.simName2 {
+  padding: 1vh 1vw;
+  margin: 8vh 1vw 0vh 3vw;
+  font-size: 6vh;
+  text-align: center;
+  width: 45vw;
+  color: #3A3938;
+  height: 30vh;
+  float: left;
+}
+.accessSim{
+  float: right;
+  padding: 5px;
+  margin: 4vh 13px 4vh 13px;
+  border: 1px solid black;
+  box-shadow: -7px 7px 5px #3A3938;
+  background-color: #2D4C9A;
+  width: 30vw;
+  font-size: 3vh;
+  text-align: center;
+  border-radius: 1vh;
+  height: 6vh;
+}
+/* .user{
+  float: right;
+  font-size: 3vh;
+  margin: 4vh 2vw 2vh 2vw;
+} */
