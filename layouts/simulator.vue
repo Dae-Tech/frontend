@@ -3,7 +3,7 @@
     <SimulatorSider></SimulatorSider>
     <slot>
       <SimulatorJoystick></SimulatorJoystick>
-      <iframe class="w-4/6" src="https://simulation.dae.com.co/"></iframe>
+      <iframe class="w-full" src="https://simulation.dae.com.co/"></iframe>
     </slot>
   </main>
 </template>
