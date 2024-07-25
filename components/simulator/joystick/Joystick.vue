@@ -36,10 +36,10 @@ connection.onclose = function (event) {
 
 connection.onmessage = function (event) {
   // Leer datos del WebSocket
-  const data = event.data;
-  console.log('Mensaje recibido:', event.data);
-  console.log("rol actual es",controls.roll)
-  console.log("data actul es",event.data['roll'])
+  const data = JSON.parse(event.data);
+  controls.roll = data["roll"]
+  controls.throttle = data["throttle"]
+  controls.pitch = data["pitch"]
   // Aquí puedes procesar los datos recibidos
 };
 
