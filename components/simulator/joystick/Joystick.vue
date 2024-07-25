@@ -26,7 +26,11 @@ function submitInputs() {
 const connection = new WebSocket("ws://20.123.77.40:3000");
 
 connection.onopen = function (event) {
+  isConnected.value = true;
   setInterval(() => submitInputs(), 100);
+};
+connection.onclose = function (event) {
+  isConnected.value = false;
 };
 
 const map = new Map();
@@ -107,7 +111,7 @@ window.addEventListener("keydown", (e) => {
       :label="isConnected ? 'Conectado' : 'Desconectado'"
     ></UBadge>
     <div class="bg-gray-200 p-4 shadow-lg rounded-lg flex flex-col gap-2">
-      <p class="text-black text-center">Controles</p>
+      <p class="text-black text-center font-bold">Controles</p>
 
       <div class="text-black flex gap-2">
         <UKbd>W</UKbd>
@@ -134,17 +138,15 @@ window.addEventListener("keydown", (e) => {
         <p>: Pitch hacia abajo</p>
       </div>
     </div>
-    <div
-      class="flex flex-col justify-center items-center bg-gray-200 p-4 shadow-xl rounded-lg"
-    >
-      <UButton :icon="map.get(keyPressed)">{{ keyPressed }}</UButton>
-      <div>
-        <p class="text-black text-center">Throttle</p>
-        <UProgress :value="controls.throttle * 100" indicator></UProgress>
-      </div>
-      <p class="text-black">Roll: {{ controls.roll.toFixed(3) }}</p>
-      <p class="text-black">Pitch: {{ controls.pitch.toFixed(3) }}</p>
-    </div>
+
+    <UButton :icon="map.get(keyPressed)">{{ keyPressed }}</UButton>
+
+    <p class="text-black text-center">Throttle</p>
+    <UProgress :value="controls.throttle * 100" indicator></UProgress>
+
+    <p class="text-black">Roll: {{ controls.roll.toFixed(3) }}</p>
+    <p class="text-black">Pitch: {{ controls.pitch.toFixed(3) }}</p>
+
     <div
       class="w-[300px] h-[300px] bg-center bg-no-repeat bg-contain"
       :class="['bg-[url(/joystick.png)]']"
