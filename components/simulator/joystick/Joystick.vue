@@ -34,6 +34,13 @@ connection.onclose = function (event) {
   isConnected.value = false;
 };
 
+connection.onmessage = function (event) {
+  // Leer datos del WebSocket
+  const data = event.data;
+  console.log('Mensaje recibido:', data);
+  // Aquí puedes procesar los datos recibidos
+};
+
 
 const map = new Map();
 map.set("ArrowUp", "i-heroicons-plus");
