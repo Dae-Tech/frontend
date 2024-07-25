@@ -38,6 +38,9 @@ connection.onmessage = function (event) {
   // Leer datos del WebSocket
   const data = event.data;
   console.log('Mensaje recibido:', data);
+  controls.throttle = data['throttle']
+  controls.roll = data['roll']
+  controls.pitch = data['pitch']
   // Aquí puedes procesar los datos recibidos
 };
 
