@@ -20,11 +20,11 @@ function submitInputs() {
     roll: controls.roll,
     pitch: controls.pitch,
   };
-  //connection.send(JSON.stringify(controlsInput));
+  connection.send(JSON.stringify(controlsInput));
 }
 
-/*
-const connection = new WebSocket("ws://20.123.77.40:3000");
+
+const connection = new WebSocket("wss://simulation.dae.com.co/socket");
 
 connection.onopen = function (event) {
   isConnected.value = true;
@@ -33,7 +33,7 @@ connection.onopen = function (event) {
 connection.onclose = function (event) {
   isConnected.value = false;
 };
-*/
+
 
 const map = new Map();
 map.set("ArrowUp", "i-heroicons-plus");
