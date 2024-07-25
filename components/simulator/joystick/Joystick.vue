@@ -39,7 +39,7 @@ connection.onmessage = function (event) {
   const data = event.data;
   console.log('Mensaje recibido:', event.data);
   console.log("rol actual es",controls.roll)
-  console.log("data actul es",data['roll'])
+  console.log("data actul es",event.data['roll'])
   // Aquí puedes procesar los datos recibidos
 };
 
