@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 const controls = reactive({
-  throttle: 0,
+  throttle: 0.6,
   roll: 0,
   pitch: 0,
 });
@@ -37,9 +37,6 @@ connection.onclose = function (event) {
 connection.onmessage = function (event) {
   // Leer datos del WebSocket
   const data = JSON.parse(event.data);
-  controls.roll = data["roll"]
-  controls.throttle = data["throttle"]
-  controls.pitch = data["pitch"]
   // Aquí puedes procesar los datos recibidos
 };
 
