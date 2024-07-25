@@ -38,8 +38,8 @@ connection.onmessage = function (event) {
   // Leer datos del WebSocket
   const data = event.data;
   console.log('Mensaje recibido:', data);
-  console.log(controls.roll)
-  console.log(data.roll)
+  console.log("rol actual es",controls.roll)
+  console.log("data actul es",data['roll'])
   // Aquí puedes procesar los datos recibidos
 };
 
