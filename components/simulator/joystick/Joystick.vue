@@ -50,21 +50,27 @@ let gamepadIndex = -1;
 
 function connectGamepad(event: GamepadEvent) {
   gamepadIndex = event.gamepad.index;
-  console.log("Gamepad connected at index:", gamepadIndex);
+  console.log("Gamepad connected at index:", gamepadIndex, "ID:", event.gamepad.id);
 }
 
 function disconnectGamepad(event: GamepadEvent) {
-  gamepadIndex = -1;
   console.log("Gamepad disconnected from index:", event.gamepad.index);
+  gamepadIndex = -1;
 }
 
 function updateGamepad() {
   if (gamepadIndex === -1) return;
   const gamepad = navigator.getGamepads()[gamepadIndex];
-  if (!gamepad) return;
+  if (!gamepad) {
+    console.log("No gamepad found at index:", gamepadIndex);
+    return;
+  }
 
   // Mapeo de los ejes del Gamepad
   const [leftStickX, leftStickY, rightStickX, rightStickY] = gamepad.axes;
+  console.log("Gamepad axes:", { leftStickX, leftStickY, rightStickX, rightStickY });
+
+  // Actualización de los controles
   controls.roll = leftStickX; // Asignar el eje X del stick izquierdo al roll
   controls.pitch = leftStickY; // Asignar el eje Y del stick izquierdo al pitch
   controls.throttle = (rightStickY + 1) / 2; // Asignar el eje Y del stick derecho al throttle (normalizado entre 0 y 1)
