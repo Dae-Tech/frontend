@@ -61,20 +61,22 @@ function disconnectGamepad(event: GamepadEvent) {
 
 function updateGamepad() {
   if (gamepadIndex === -1) return;
+  
   const gamepad = navigator.getGamepads()[gamepadIndex];
   if (!gamepad) {
     console.log("No gamepad found at index:", gamepadIndex);
     return;
   }
 
-  // Mapeo de los ejes del Gamepad
-  const [leftStickX, leftStickY, rightStickX, rightStickY] = gamepad.axes;
-  console.log("Gamepad axes:", { leftStickX, leftStickY, rightStickX, rightStickY });
-
+  // Mapeo de los ejes del Gamepad usando índices
+  const roll = gamepad.axes[0]; // Eje X del stick izquierdo
+  const pitch = gamepad.axes[1]; // Eje Y del stick izquierdo
+  const throttle = (gamepad.axes[3] + 1) / 2; // Eje Y del stick derecho, normalizado entre 0 y 1
+  
   // Actualización de los controles
-  controls.roll = leftStickX; // Asignar el eje X del stick izquierdo al roll
-  controls.pitch = leftStickY; // Asignar el eje Y del stick izquierdo al pitch
-  controls.throttle = (rightStickY + 1) / 2; // Asignar el eje Y del stick derecho al throttle (normalizado entre 0 y 1)
+  controls.roll = roll;
+  controls.pitch = pitch;
+  controls.throttle = throttle;
 
   // Mostrar los valores actuales de los controles en la consola
   console.log("Controls:", {
@@ -98,18 +100,68 @@ onUnmounted(() => {
 });
 </script>
 <template>
-  <div class="h-screen w-[400px] bg-white flex items-center gap-8 p-2 flex-col justify-center">
-    <UBadge size="lg" variant="outline" :color="isConnected ? 'green' : 'red'" :label="isConnected ? 'Conectado' : 'Desconectado'"></UBadge>
+  <div
+    class="h-screen w-[400px] bg-white flex items-center gap-8 p-2 flex-col justify-center"
+  >
+    <UBadge
+      size="lg"
+      variant="outline"
+      :color="isConnected ? 'green' : 'red'"
+      :label="isConnected ? 'Conectado' : 'Desconectado'"
+      :style="{ color: isConnected ? 'inherit' : 'black' }" <!-- Agrega esta línea -->
+    ></UBadge>
     <div class="bg-gray-200 p-4 shadow-lg rounded-lg flex flex-col gap-2">
       <p class="text-black text-center font-bold">Controles</p>
+
+      <div class="text-black flex gap-2">
+        <UKbd>W</UKbd>
+        <p>: Aumentar throttle</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>S</UKbd>
+        <p>: Disminuir throttle</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>←</UKbd>
+        <p>: Roll hacia la izquierda</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>→</UKbd>
+        <p>: Roll hacia la derecha</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>↑</UKbd>
+        <p>: Pitch hacia arriba</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>↓</UKbd>
+        <p>: Pitch hacia abajo</p>
+      </div>
     </div>
+
+    <UButton :icon="map.get(keyPressed)">{{ keyPressed }}</UButton>
+
     <p class="text-black text-center">Throttle</p>
     <UProgress :value="controls.throttle * 100" indicator></UProgress>
+
     <p class="text-black">Roll: {{ controls.roll.toFixed(3) }}</p>
     <p class="text-black">Pitch: {{ controls.pitch.toFixed(3) }}</p>
-    <div class="w-[300px] h-[300px] bg-center bg-no-repeat bg-contain" :class="['bg-[url(/joystick.png)]']">
-      <div :style="{ top: `${125 - controls.throttle * 10}px` }" class="w-[50px] h-[50px] bg-blue-500 rounded-full relative left-[78px]"></div>
-      <div :style="{ top: `${76 - controls.pitch * 10}px`, left: `${174 + controls.roll * 10}px` }" class="w-[50px] h-[50px] bg-red-500 rounded-full relative"></div>
+
+    <div
+      class="w-[300px] h-[300px] bg-center bg-no-repeat bg-contain"
+      :class="['bg-[url(/joystick.png)]']"
+    >
+      <div
+        :style="{ top: `${125 - controls.throttle * 10}px` }"
+        class="w-[50px] h-[50px] bg-blue-500 rounded-full relative left-[78px]"
+      ></div>
+      <div
+        :style="{
+          top: `${76 - controls.pitch * 10}px`,
+          left: `${174 + controls.roll * 10}px`,
+        }"
+        class="w-[50px] h-[50px] bg-red-500 rounded-full relative"
+      ></div>
     </div>
   </div>
 </template>
