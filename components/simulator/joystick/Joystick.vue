@@ -25,6 +25,7 @@ function submitInputs() {
     roll: controls.roll,
     pitch: controls.pitch,
   };
+  console.log("Sending controls:", controlsInput); // Ver valores antes de enviar
   connection.send(JSON.stringify(controlsInput));
 }
 
@@ -74,6 +75,13 @@ function updateGamepad() {
   controls.roll = leftStickX; // Asignar el eje X del stick izquierdo al roll
   controls.pitch = leftStickY; // Asignar el eje Y del stick izquierdo al pitch
   controls.throttle = (rightStickY + 1) / 2; // Asignar el eje Y del stick derecho al throttle (normalizado entre 0 y 1)
+
+  // Mostrar los valores actuales de los controles en la consola
+  console.log("Controls:", {
+    roll: controls.roll.toFixed(3),
+    pitch: controls.pitch.toFixed(3),
+    throttle: controls.throttle.toFixed(3),
+  });
 
   requestAnimationFrame(updateGamepad);
 }
