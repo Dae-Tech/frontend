@@ -60,19 +60,24 @@ function disconnectGamepad(event: GamepadEvent) {
 }
 
 function updateGamepad() {
+  console.log("updateGamepad called"); // Verifica si esta línea se ejecuta
   if (gamepadIndex === -1) return;
-  
+
   const gamepad = navigator.getGamepads()[gamepadIndex];
   if (!gamepad) {
     console.log("No gamepad found at index:", gamepadIndex);
     return;
   }
 
+  // Imprime todos los ejes y botones para ver sus valores
+  console.log("Gamepad axes:", gamepad.axes);
+  console.log("Gamepad buttons:", gamepad.buttons);
+
   // Mapeo de los ejes del Gamepad usando índices
-  const roll = gamepad.axes[0]; // Eje X del stick izquierdo
-  const pitch = gamepad.axes[1]; // Eje Y del stick izquierdo
-  const throttle = (gamepad.axes[3] + 1) / 2; // Eje Y del stick derecho, normalizado entre 0 y 1
-  
+  const roll = gamepad.axes[0]; // Generalmente el eje X del stick izquierdo
+  const pitch = gamepad.axes[1]; // Generalmente el eje Y del stick izquierdo
+  const throttle = (gamepad.axes[3] + 1) / 2; // Generalmente el eje X del stick derecho o un gatillo
+
   // Actualización de los controles
   controls.roll = roll;
   controls.pitch = pitch;
@@ -99,6 +104,7 @@ onUnmounted(() => {
   window.removeEventListener("gamepaddisconnected", disconnectGamepad);
 });
 </script>
+
 
 
 <template>
