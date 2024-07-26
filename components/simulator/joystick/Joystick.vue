@@ -29,21 +29,30 @@ function submitInputs() {
   connection.send(JSON.stringify(controlsInput));
 }
 
-// Conexión WebSocket
+function submitInputs() {
+  const controlsInput: ControlsInput = {
+    throttle: controls.throttle,
+    roll: controls.roll,
+    pitch: controls.pitch,
+  };
+  connection.send(JSON.stringify(controlsInput));
+}
+
+
 const connection = new WebSocket("wss://simulation.dae.com.co/socket");
 
-connection.onopen = function () {
+connection.onopen = function (event) {
   isConnected.value = true;
   setInterval(() => submitInputs(), 100);
 };
-
-connection.onclose = function () {
+connection.onclose = function (event) {
   isConnected.value = false;
 };
 
 connection.onmessage = function (event) {
+  // Leer datos del WebSocket
   const data = JSON.parse(event.data);
-  // Procesar datos recibidos del WebSocket
+  // Aquí puedes procesar los datos recibidos
 };
 
 // Lógica para el uso del Gamepad
