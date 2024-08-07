@@ -116,7 +116,7 @@ window.addEventListener("keydown", (e) => {
   }
   if(e.key == "D" || e.key == "d"){
     if(validCommand(controls.yaw,0.1,1,"<=")){
-      controls.yaw -= 0.1
+      controls.yaw += 0.1
     }
   }
 });
