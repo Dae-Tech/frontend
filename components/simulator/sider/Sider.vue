@@ -1,6 +1,11 @@
 <script setup>
 const selected = ref(0);
 const category = ref("");
+const toggle = ref(false);
+
+function setToggle() {
+  toggle.value = !toggle.value;
+}
 
 function setSelected(number) {
   selected.value = number;
@@ -30,7 +35,7 @@ console.log(options["Free Flight"][1]);
 <template>
   <div
     :class="selected === 1 ? 'bg-gray-500' : 'bg-[#2D4C9A]'"
-    class="w-[350px] text-[#f5f5f5] relative p-5 flex flex-col"
+    class="w-[350px] hidden text-[#f5f5f5] relative p-5 flex flex-col"
   >
     <div class="mx-auto">
       <p class="font-bold">Pilot's name</p>
@@ -64,6 +69,11 @@ console.log(options["Free Flight"][1]);
       </p>
       <p class="hover:text-blue-500">Exit</p>
     </div>
+    <UIcon
+      name="i-heroicons-arrow-right"
+      color="black"
+      class="h-[40px] w-[50px] bg-black relative left-[300px] bottom-[150px] cursor-pointer"
+    ></UIcon>
   </div>
   <div
     v-if="selected == 1"
