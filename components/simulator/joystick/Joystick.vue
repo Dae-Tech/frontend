@@ -13,6 +13,7 @@ interface ControlsInput {
   roll: number;
   throttle: number;
   pitch: number;
+  yaw: number;
 }
 
 function submitInputs() {
@@ -114,7 +115,7 @@ window.addEventListener("keydown", (e) => {
   }
   }
   if(e.key == "D" || e.key == "D"){
-    if(validCommand(controls.yaw,+0.1,1,"<=")){
+    if(validCommand(controls.yaw,0.1,1,"<=")){
       controls.yaw -= 0.1
     }
   }
