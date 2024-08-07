@@ -4,6 +4,7 @@ const controls = reactive({
   throttle: 0.6,
   roll: 0,
   pitch: 0,
+  yaw: 0
 });
 
 const isConnected = ref(false);
@@ -19,6 +20,7 @@ function submitInputs() {
     throttle: controls.throttle,
     roll: controls.roll,
     pitch: controls.pitch,
+    yaw: controls.yaw
   };
   connection.send(JSON.stringify(controlsInput));
 }
@@ -106,6 +108,16 @@ window.addEventListener("keydown", (e) => {
       controls.pitch -= 0.1;
     }
   }
+  if(e.key == "A" || e.key == "a"){
+    if(validCommand(controls.yaw,-0.1,-1,">=")){
+      controls.yaw -= 0.1
+  }
+  }
+  if(e.key == "D" || e.key == "D"){
+    if(validCommand(controls.yaw,+0.1,1,"<=")){
+      controls.yaw -= 0.1
+    }
+  }
 });
 </script>
 <template>
@@ -144,6 +156,14 @@ window.addEventListener("keydown", (e) => {
       <div class="text-black flex gap-2">
         <UKbd>↓</UKbd>
         <p>: Pitch hacia abajo</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>A</UKbd>
+        <p>: Yaw hacia la izquierda</p>
+      </div>
+      <div class="text-black flex gap-2">
+        <UKbd>D</UKbd>
+        <p>: Yaw hacia la derecha</p>
       </div>
     </div>
 
