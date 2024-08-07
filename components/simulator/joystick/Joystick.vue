@@ -175,6 +175,7 @@ window.addEventListener("keydown", (e) => {
 
     <p class="text-black">Roll: {{ controls.roll.toFixed(3) }}</p>
     <p class="text-black">Pitch: {{ controls.pitch.toFixed(3) }}</p>
+     <p class="text-black">Yaw: {{ controls.yaw.toFixed(3) }}</p>
 
     <div
       class="w-[300px] h-[300px] bg-center bg-no-repeat bg-contain"
