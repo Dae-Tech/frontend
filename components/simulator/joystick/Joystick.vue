@@ -7,6 +7,7 @@ const controls = reactive({
   yaw: 0
 });
 
+const altitude = ref(0);
 const isConnected = ref(false);
 
 interface ControlsInput {
@@ -28,6 +29,15 @@ function submitInputs() {
 
 
 const connection = new WebSocket("wss://simulation.dae.com.co/socket");
+
+connection.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+
+    // You can now handle the response
+    // For example, if the server sends JSON data:
+    const response = JSON.parse(event.data);
+    altitude.value = response['altitude']
+});
 
 connection.onopen = function (event) {
   isConnected.value = true;
@@ -131,6 +141,9 @@ window.addEventListener("keydown", (e) => {
       :color="isConnected ? 'green' : 'red'"
       :label="isConnected ? 'Conectado' : 'Desconectado'"
     ></UBadge>
+    <UBadge size="lg" variant="outline">
+      {{altitude}}
+    </UBadge>
     <div class="bg-gray-200 p-4 shadow-lg rounded-lg flex flex-col gap-2">
       <p class="text-black text-center font-bold">Controles</p>
 
