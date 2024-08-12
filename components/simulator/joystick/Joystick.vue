@@ -142,7 +142,7 @@ window.addEventListener("keydown", (e) => {
       :label="isConnected ? 'Conectado' : 'Desconectado'"
     ></UBadge>
     <UBadge size="lg" variant="outline">
-      {{altitude}}
+      Altitude: {{altitude}}m
     </UBadge>
     <div class="bg-gray-200 p-4 shadow-lg rounded-lg flex flex-col gap-2">
       <p class="text-black text-center font-bold">Controles</p>
